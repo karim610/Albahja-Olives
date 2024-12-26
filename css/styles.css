@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Mode Styles */
+.light-mode {
+    background-color: #f9f9f9; /* Light background */
+    color: #333; /* Dark text */
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #333; /* Dark background */
+    color: #f0e68c; /* Light yellow text */
+}
+
+/* Light/Dark mode header styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .nav-links li a {
+    color: white;
+}
+
+/* Light/Dark mode button styles */
+header .theme-switcher button,
+header .language-switcher button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #f0e68c;
+    border: none;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+header .theme-switcher button:hover,
+header .language-switcher button:hover {
+    background-color: #ddd;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Product Section Styles */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.product-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* For Dark Mode, change background of product items */
+.dark-mode .product-item {
+    background-color: #444; /* Darker background */
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #fff;
+}
+
+.dark-mode .modal-content {
+    background-color: #444; /* Darker background for modal */
+    color: #f0e68c; /* Light text in dark mode */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Floating WhatsApp Icon */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: green;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-size: 30px;
+    transition: background-color 0.3s ease;
+    z-index: 100;
+}
+
+.whatsapp-float:hover {
+    background-color: #25d366;
+}
+
+.whatsapp-float i {
+    margin: 0;
+}
+

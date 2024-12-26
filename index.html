@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+    <style>
+        /* About Us Section with Background */
+        .about-us {
+            background-image: url('IMG/image6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            padding: 80px 20px;
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .about-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Rest of your styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            position: relative;
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .theme-switcher, .language-switcher {
+            margin-top: 10px;
+        }
+
+        .theme-switcher button,
+        .language-switcher button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #f0e68c;
+            border: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .theme-switcher button:hover,
+        .language-switcher button:hover {
+            background-color: #ddd;
+        }
+
+        .products h2, .header h1 {
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .whatsapp-icon {
+            font-size: 2em;
+            color: green;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: #fff;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Sticker Olive Tree */
+        .olive-tree-sticker {
+            position: absolute;
+            top: 27%;
+            left: 62%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: auto;
+            z-index: 2;
+        }
+
+        /* Theme and language button styles */
+        .light-mode {
+            background-color: #f9f9f9; /* Light background */
+            color: #333; /* Dark text */
+        }
+
+        .dark-mode {
+            background-color: #333; /* Dark background */
+            color: #f0e68c; /* Light yellow text */
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background-color: #fff;
+        }
+
+        .dark-mode .modal-content {
+            background-color: #444; /* Darker background for modal */
+            color: #f0e68c; /* Light text in dark mode */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h2 data-lang="albahja-olives">Albahja Olives</h2>
+
+            
+            <div class="theme-switcher">
+                <button id="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
+            </div>
+            <div class="language-switcher">
+                <button id="lang-en" onclick="setLanguage('en')">English</button>
+                <button id="lang-ar" onclick="setLanguage('ar')">العربية</button>
+            </div>
+        </div>
+        <!-- Olive Tree Sticker -->
+        <img src="IMG/image001.jpg" alt="Olive Tree Sticker" class="olive-tree-sticker">
+    </header>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <h2 data-lang="about-us-title">About Us</h2>
+        <p data-lang="about-us-description">
+            
+
+Since 1994, Al Bahja Olives has been your trusted source for the finest quality olives, proudly serving the vibrant community of Hay Hassani. With nearly three decades of experience, we’ve built a reputation as the go-to destination for authentic, flavorful olives that bring joy to every meal.
+
+As the #1 olive provider in Hay Hassani, we specialize in a wide variety of olives, from traditional black and green to uniquely seasoned and prepared selections. Our commitment to excellence and customer satisfaction has made us a beloved name in the neighborhood and beyond.
+
+At Al Bahja Olives, we believe in preserving tradition while offering the highest quality products. Whether for your salads, tajines, or special occasions, trust us to deliver the perfect flavors every time
+        </p>
+    </section>
+
+    <!-- Product Gallery Section -->
+    <section class="products">
+        <h2 data-lang="products-title">Our Products</h2>
+        <div class="products-grid">
+           <div class="product-item">
+    <img src="IMG/image1.jpg" alt="Natural Black Olives" data-large="IMG/image1_large.jpg">
+    <h3 data-title-en="Natural Black Olives" data-title-ar=" الزيتون الأسود الطبيعي">Natural Black Olives</h3>
+    <p data-description-en=" Great for enhancing the flavor of salads, tajines, or served with bread and olive oil as part of an appetizer platter.."
+       data-description-ar="لزيتون الأسود الطبيعي يتمتع بنكهة عميقة وغنية مع طعم معتدل، يأتي بشكل طبيعي بعد مرحلة التخمير، ويتميز بلونه الأسود اللامع..">
+        Great for enhancing the flavor of salads, tajines, or served with bread and olive oil as part of an appetizer platter..
+    </p>
+</div>
+
+<div class="product-item">
+    <img src="IMG/image2.jpg" alt="Classic Green" data-large="IMG/image2_large.jpg">
+    <h3 data-title-en="Classic Green" data-title-ar="الأسود التقليدي">Classic Green</h3>
+    <p data-description-en="Freshly picked and naturally brined."
+       data-description-ar="الأسود التقليدي ممتاز للسلطة.">
+        Freshly picked and naturally brined.
+    </p>
+</div>
+<!-- Repeat this pattern for all products -->
+
+<div class="product-item">
+    <img src="IMG/image3.jpg" alt="Golden Harvest" data-large="IMG/image1_large.jpg">
+    <h3 data-title-en="New Season Black Olives" data-title-ar="الزيتون الأسود الجديد حديت السنة"> New Season Black Olives</h3>
+    <p data-description-en="Ideal for fresh salads, tajines, or as a tasty addition to appetizers like bruschetta."
+       data-description-ar="غلزيتون الأسود الجديد طعمه طازج وقوامه طري، يمتاز بتوازن مثالي بين الحلاوة والمرارة مما يجعله لذيذًا في العديد من الأطباق">
+         Ideal for fresh salads, tajines, or as a tasty addition to appetizers like bruschetta.
+    </p>
+</div>
+<div class="product-item">
+    <img src="IMG/image99.jpg" alt="olives oil" data-large="IMG/image1_large.jpg">
+    <h3 data-title-en="green olives oil" data-title-ar="زيت الزيتون"> olives oil</h3>
+    <p data-description-en="Ideal for fresh salads, tajines, or as a tasty addition to appetizers like bruschetta."
+       data-description-ar="زيت زيتون طبيعي ">
+         green olives oil  .
+    </p>
+</div>
+
+<div class="product-item">
+    <img src="IMG/image4.jpg" alt="Slice Black Olives" data-large="IMG/image2_large.jpg">
+    <h3 data-title-en="Slice Black Olives" data-title-ar="الزيتون الأسود المقطع">Slice Black Olives</h3>
+    <p data-description-en="deal for adding depth to salads, Mediterranean dips, or tajines, and as a topping for pizzas.."
+       data-description-ar="الزيتون الأسود المقطع له نكهة غنية ودسمة تجعله خيارًا رائعًا في الأطباق التي تحتاج إلى إضافة لمسة من المذاق المميز. يتميز بلونه الداكن وقوامه اللين..">
+        deal for adding depth to salads, Mediterranean dips, or tajines, and as a topping for pizzas.
+    </p>
+</div>
+<!-- Repeat this pattern for all products -->
+
+<div class="product-item">
+    <img src="IMG/image5.jpg" alt="Pitless Green Olives" data-large="IMG/image1_large.jpg">
+    <h3 data-title-en="Pitless Green Olives" data-title-ar="الزيتون الأخضر بدون عضم">Pitless Green Olives</h3>
+    <p data-description-en="Perfect for salads, tapas, or as a convenient snack on the go..."
+       data-description-ar="الزيتون الأخضر بدون عضم سهل الاستهلاك بفضل إزالة العظم، ويحتفظ بنكهة طازجة وقوام هش مما يجعله مثاليًا في الأطباق السريعة.">
+        Perfect for salads, tapas, or as a convenient snack on the go..
+    </p>
+</div>
+
+
+<div class="product-item">
+    <img src="IMG/image8.jpg" alt="White Olives " data-large="IMG/image2_large.jpg">
+    <h3 data-title-en="White Olives " data-title-ar="الزيتون الأبيض منابي للطبخ">White Olives for Cooking </h3>
+    <p data-description-en="Best for tajines, cooked dishes, vegetable stews, or savory pastries.."
+       data-description-ar="الزيتون الأبيض يتمتع بنكهة خفيفة وطعم مميز عند الطهي، مما يجعله خيارًا مثاليًا لإضافة لمسة لذيذة للأطباق المطهوة.
+">
+         Best for tajines, cooked dishes, vegetable stews, or savory pastries.
+    </p>
+</div>
+<div class="product-item">
+    <img src="IMG/image7.jpg" alt="Classic Green" data-large="IMG/image2_large.jpg">
+    <h3 data-title-en="Classic Green" data-title-ar="الأخضر ">Classic Green</h3>
+    <p data-description-en="Freshly picked and naturally brined."
+       data-description-ar="منتقى حديثاً ومملح طبيعياً.">
+        Freshly picked and naturally brined.
+    </p>
+</div>
+<div class="product-item">
+    <img src="IMG/image9.jpg" alt="Red Olivesn" data-large="IMG/image2_large.jpg">
+    <h3 data-title-en="Red Olives" data-title-ar="الزيتون الأحمر ">Red Olives</h3>
+    <p data-description-en="Perfect for chicken tajines, roasted chicken dishes, or as a flavorful garnish for poultry recipes.."
+       data-description-ar=" الزيتون الأحمر يتميز بلونه الجذاب ونكهته الفريدة التي تضيف طعمًا شهيًا إلى أطباق الدجاج. يتم تحضيره بطرق خاصة لتعزيز النكهات وإضفاء لمسة مميزة على الطهي..">
+       Perfect for chicken tajines, roasted chicken dishes, or as a flavorful garnish for poultry recipes..
+    </p>
+</div>
+<div class="product-item">
+    <img src="IMG/image10.jpg" alt="Slice Green Olives" data-large="IMG/image2_large.jpg">
+    <h3 data-title-en="Slice Green Olives" data-title-ar="الزيتون الأخضر المقطع">Slice Green Olives</h3>
+    <p data-description-en="Perfect for adding a crisp, fresh taste to salads, sandwiches, or as a garnish for tajines."
+       data-description-ar=" الزيتون الأخضر المقطع يتميز بنكهة معتدلة ومنعشة. يتم تحضيره بعناية ليحتفظ بقوامه الهش والطازج، مما يجعله مثاليًا لاستخدامه في الأطباق الباردة.">
+        Perfect for adding a crisp, fresh taste to salads, sandwiches, or as a garnish for tajines.
+    </p>
+</div>
+<!-- Repeat this pattern for all products -->
+
+            <!-- Additional Products here -->
+        </div>
+    </section>
+<div id="images-container">
+  <img src="IMG/image1.jpg" alt="IMG/Image 1" class="product-image" data-price="36" id="IMG/image1">
+  <img src="IMG/image2.jpg" alt="IMG/Image 2" class="product-image" data-price="40" id="IMG/image2">
+  <img src="IMG/image3.jpg" alt="IMG/Image 3" class="product-image" data-price="45" id="IMG/image3">
+  <img src="IMG/image4.jpg" alt="IMG/Image 4" class="product-image" data-price="50" id="IMG/image4">
+  <img src="IMG/image5.jpg" alt="IMG/Image 5" class="product-image" data-price="38" id="IMG/image5">
+  <img src="IMG/image6.jpg" alt="IMG/Image 6" class="product-image" data-price="42" id="IMG/image6">
+  <img src="IMG/image7.jpg" alt="IMG/Image 7" class="product-image" data-price="44" id="IMG/image7">
+  <img src="IMG/image8.jpg" alt="IMG/Image 8" class="product-image" data-price="48" id="IMG/image8">
+<img src="IMG/image11.jpg" alt="IMG/Image 8" class="product-image" data-price="48" id="IMG/image10">
+<img src="IMG/image1.jpg" alt="IMG/Image 8" class="product-image" data-price="48" id="IMG/image11">
+<img src="IMG/image12.jpg" alt="IMG/Image 8" class="product-image" data-price="48" id="IMG/image12">
+<img src="IMG/image14.jpg" alt="IMG/Image 8" class="product-image" data-price="48" id="IMG/image14">
+</div>
+
+
+    <script>
+        // Get all the images
+        const images = document.querySelectorAll('.product-image');
+
+        // Get the description and price display elements
+        const descriptionDisplay = document.getElementById('description');
+        const priceDisplay = document.getElementById('product-price');
+
+        // Add event listeners to each image
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                // Get the price and description from the clicked image's attributes
+                const price = image.getAttribute('data-price');
+                const description = image.getAttribute('data-description');
+                
+                // Update the description and price display
+                descriptionDisplay.textContent = description;
+                priceDisplay.textContent = `Price: ${price} DH`;
+            });
+        });
+    </script>
+</body>
+</html>
+<p id="product-price">Price: 36 DH</p>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <a href="https://wa.me/212603505815" 
+       class="whatsapp-float" 
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+                
+           
+            <p>&copy; 2024 Albahja Olives. All Rights Reserved.</p>
+            <p>Al Bahja Olives, <br> 33 5713670, -7.6777023, <br> Casablanca 20200</p>
+<p>Made by <a href="https://www.linkedin.com/in/karim-kassi-892ba1254/" target="_blank">Karim</a></p>
+        </div>
+    </footer>
+
+    <!-- Modal for Larger Image -->
+    <div class="modal">
+        <div class="modal-content">
+            <button class="close">&times;</button>
+            <img class="modal-image" src="" alt="">
+            <h3 class="modal-title"></h3>
+            <p class="modal-description"></p>
+            <p class="modal-price">36DH</p>
+        </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+
